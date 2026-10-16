@@ -55,18 +55,18 @@ export function Torch({ src, alt, className = "", children, radius = 300 }: { sr
 /* ------------------------------------------------------------------ */
 /* 2. The Comet that grows with the scroll: Vita · Nova · Lux           */
 /* ------------------------------------------------------------------ */
-function cometPath(progress: number) {
-  const cx = 100, cy = 100, r = 66, n = 140;
-  const span = 330 * Math.max(0.02, Math.min(1, progress * 1.15));
+/* Exact logo geometry (r 66, 330° tail, width 1.2 → 28, power 1.6). The scroll only reveals it, from the tail to the head. */
+function cometPath(reveal: number) {
+  const cx = 100, cy = 100, r = 66, n = 160;
   const th1 = (-45 * Math.PI) / 180;
-  const th0 = th1 - (span * Math.PI) / 180;
-  const wmax = 1.2 + 26.8 * Math.min(1, progress * 1.1);
+  const th0 = th1 - (330 * Math.PI) / 180;
+  const end = Math.max(0.01, Math.min(1, reveal));
   const out: string[] = [];
   const inn: string[] = [];
   for (let i = 0; i <= n; i++) {
-    const t = i / n;
+    const t = (i / n) * end;
     const th = th0 + (th1 - th0) * t;
-    const w = 1.2 + (wmax - 1.2) * t ** 1.6;
+    const w = 1.2 + 26.8 * t ** 1.6;
     out.push(`${(cx + (r + w / 2) * Math.cos(th)).toFixed(2)} ${(cy + (r + w / 2) * Math.sin(th)).toFixed(2)}`);
     inn.push(`${(cx + (r - w / 2) * Math.cos(th)).toFixed(2)} ${(cy + (r - w / 2) * Math.sin(th)).toFixed(2)}`);
   }
@@ -120,17 +120,17 @@ export function CometChapters({ chapters }: { chapters: Chapter[] }) {
   }
 
   const idx = Math.min(chapters.length - 1, Math.floor(p * chapters.length * 0.999));
-  const sun = Math.max(0, (p - 0.82) / 0.18);
+  const sun = Math.min(1, Math.max(0, (p - 0.8) / 0.12));
   return (
     <section ref={ref} className="relative bg-[#081629] text-on-band" style={{ height: `${chapters.length * 110}vh` }}>
-      <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden">
-        <svg viewBox="16 16 168 168" aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 w-[150vmin] -translate-x-1/2 -translate-y-1/2 md:left-[68%] md:w-[110vmin]">
-          <path d={cometPath(p)} fill="#8A9BB0" opacity={0.22 + 0.5 * p} />
-          <circle cx={146.67} cy={53.33} r={21 * (0.4 + 0.6 * sun)} fill="#E9B949" opacity={sun} />
-          <circle cx={146.67} cy={53.33} r={60} fill="url(#glow)" opacity={sun * 0.8} />
-          <defs>
-            <radialGradient id="glow"><stop offset="0" stopColor="#E9B949" stopOpacity=".45" /><stop offset="1" stopColor="#E9B949" stopOpacity="0" /></radialGradient>
-          </defs>
+      <div className="sticky top-0 flex h-[100svh] items-end overflow-hidden pb-10 md:items-center md:pb-0">
+        <svg viewBox="16 16 168 168" aria-hidden className="pointer-events-none absolute right-[6vw] top-[11vh] w-[58vw] max-w-[420px] md:right-[6vw] md:top-1/2 md:w-[46vmin] md:max-w-none md:-translate-y-1/2 lg:w-[62vmin]">
+          <mask id="comet-gap" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
+            <rect width="200" height="200" fill="#fff" />
+            <circle cx={146.67} cy={53.33} r={24.5} fill="#000" fillOpacity={sun} />
+          </mask>
+          <path d={cometPath(p / 0.8)} fill="#8A9BB0" mask="url(#comet-gap)" />
+          <circle cx={146.67} cy={53.33} r={21} fill="#E9B949" opacity={sun} />
         </svg>
         <div className="container-site relative w-full">
           <div className="flex items-center gap-4 t-caption tracking-[3px] text-on-band-muted">
