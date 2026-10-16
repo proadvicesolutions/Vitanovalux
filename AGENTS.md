@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Site copy is bilingual via `{it,en}` objects resolved with `useLang()` (src/lib/i18n.tsx); shared content lives in src/lib/content.ts. Why: one source for both languages.
