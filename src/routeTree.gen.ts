@@ -10,115 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
-import { Route as ContattiRouteImport } from './routes/contatti'
-import { Route as ImpreseRouteImport } from './routes/imprese'
-import { Route as PersoneRouteImport } from './routes/persone'
-import { Route as StorieIndexRouteImport } from './routes/storie.index'
-import { Route as StorieSlugRouteImport } from './routes/storie.$slug'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CompaniesRouteImport } from './routes/companies'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as PeopleRouteImport } from './routes/people'
+import { Route as StoriesIndexRouteImport } from './routes/stories.index'
+import { Route as StoriesSlugRouteImport } from './routes/stories.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ChiSiamoRoute = ChiSiamoRouteImport.update({
-  id: '/chi-siamo',
-  path: '/chi-siamo',
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContattiRoute = ContattiRouteImport.update({
-  id: '/contatti',
-  path: '/contatti',
+const CompaniesRoute = CompaniesRouteImport.update({
+  id: '/companies',
+  path: '/companies',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ImpreseRoute = ImpreseRouteImport.update({
-  id: '/imprese',
-  path: '/imprese',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PersoneRoute = PersoneRouteImport.update({
-  id: '/persone',
-  path: '/persone',
+const PeopleRoute = PeopleRouteImport.update({
+  id: '/people',
+  path: '/people',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StorieIndexRoute = StorieIndexRouteImport.update({
-  id: '/storie/',
-  path: '/storie/',
+const StoriesIndexRoute = StoriesIndexRouteImport.update({
+  id: '/stories/',
+  path: '/stories/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StorieSlugRoute = StorieSlugRouteImport.update({
-  id: '/storie/$slug',
-  path: '/storie/$slug',
+const StoriesSlugRoute = StoriesSlugRouteImport.update({
+  id: '/stories/$slug',
+  path: '/stories/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/chi-siamo': typeof ChiSiamoRoute
-  '/contatti': typeof ContattiRoute
-  '/imprese': typeof ImpreseRoute
-  '/persone': typeof PersoneRoute
-  '/storie/$slug': typeof StorieSlugRoute
-  '/storie/': typeof StorieIndexRoute
+  '/about': typeof AboutRoute
+  '/companies': typeof CompaniesRoute
+  '/contact': typeof ContactRoute
+  '/people': typeof PeopleRoute
+  '/stories/$slug': typeof StoriesSlugRoute
+  '/stories/': typeof StoriesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/chi-siamo': typeof ChiSiamoRoute
-  '/contatti': typeof ContattiRoute
-  '/imprese': typeof ImpreseRoute
-  '/persone': typeof PersoneRoute
-  '/storie/$slug': typeof StorieSlugRoute
-  '/storie': typeof StorieIndexRoute
+  '/about': typeof AboutRoute
+  '/companies': typeof CompaniesRoute
+  '/contact': typeof ContactRoute
+  '/people': typeof PeopleRoute
+  '/stories/$slug': typeof StoriesSlugRoute
+  '/stories': typeof StoriesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/chi-siamo': typeof ChiSiamoRoute
-  '/contatti': typeof ContattiRoute
-  '/imprese': typeof ImpreseRoute
-  '/persone': typeof PersoneRoute
-  '/storie/$slug': typeof StorieSlugRoute
-  '/storie/': typeof StorieIndexRoute
+  '/about': typeof AboutRoute
+  '/companies': typeof CompaniesRoute
+  '/contact': typeof ContactRoute
+  '/people': typeof PeopleRoute
+  '/stories/$slug': typeof StoriesSlugRoute
+  '/stories/': typeof StoriesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/chi-siamo'
-    | '/contatti'
-    | '/imprese'
-    | '/persone'
-    | '/storie/$slug'
-    | '/storie/'
+    | '/about'
+    | '/companies'
+    | '/contact'
+    | '/people'
+    | '/stories/$slug'
+    | '/stories/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/chi-siamo'
-    | '/contatti'
-    | '/imprese'
-    | '/persone'
-    | '/storie/$slug'
-    | '/storie'
+    | '/about'
+    | '/companies'
+    | '/contact'
+    | '/people'
+    | '/stories/$slug'
+    | '/stories'
   id:
     | '__root__'
     | '/'
-    | '/chi-siamo'
-    | '/contatti'
-    | '/imprese'
-    | '/persone'
-    | '/storie/$slug'
-    | '/storie/'
+    | '/about'
+    | '/companies'
+    | '/contact'
+    | '/people'
+    | '/stories/$slug'
+    | '/stories/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ChiSiamoRoute: typeof ChiSiamoRoute
-  ContattiRoute: typeof ContattiRoute
-  ImpreseRoute: typeof ImpreseRoute
-  PersoneRoute: typeof PersoneRoute
-  StorieSlugRoute: typeof StorieSlugRoute
-  StorieIndexRoute: typeof StorieIndexRoute
+  AboutRoute: typeof AboutRoute
+  CompaniesRoute: typeof CompaniesRoute
+  ContactRoute: typeof ContactRoute
+  PeopleRoute: typeof PeopleRoute
+  StoriesSlugRoute: typeof StoriesSlugRoute
+  StoriesIndexRoute: typeof StoriesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -130,46 +130,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chi-siamo': {
-      id: '/chi-siamo'
-      path: '/chi-siamo'
-      fullPath: '/chi-siamo'
-      preLoaderRoute: typeof ChiSiamoRouteImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contatti': {
-      id: '/contatti'
-      path: '/contatti'
-      fullPath: '/contatti'
-      preLoaderRoute: typeof ContattiRouteImport
+    '/companies': {
+      id: '/companies'
+      path: '/companies'
+      fullPath: '/companies'
+      preLoaderRoute: typeof CompaniesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/imprese': {
-      id: '/imprese'
-      path: '/imprese'
-      fullPath: '/imprese'
-      preLoaderRoute: typeof ImpreseRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/persone': {
-      id: '/persone'
-      path: '/persone'
-      fullPath: '/persone'
-      preLoaderRoute: typeof PersoneRouteImport
+    '/people': {
+      id: '/people'
+      path: '/people'
+      fullPath: '/people'
+      preLoaderRoute: typeof PeopleRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/storie/': {
-      id: '/storie/'
-      path: '/storie'
-      fullPath: '/storie/'
-      preLoaderRoute: typeof StorieIndexRouteImport
+    '/stories/': {
+      id: '/stories/'
+      path: '/stories'
+      fullPath: '/stories/'
+      preLoaderRoute: typeof StoriesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/storie/$slug': {
-      id: '/storie/$slug'
-      path: '/storie/$slug'
-      fullPath: '/storie/$slug'
-      preLoaderRoute: typeof StorieSlugRouteImport
+    '/stories/$slug': {
+      id: '/stories/$slug'
+      path: '/stories/$slug'
+      fullPath: '/stories/$slug'
+      preLoaderRoute: typeof StoriesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -177,12 +177,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ChiSiamoRoute: ChiSiamoRoute,
-  ContattiRoute: ContattiRoute,
-  ImpreseRoute: ImpreseRoute,
-  PersoneRoute: PersoneRoute,
-  StorieSlugRoute: StorieSlugRoute,
-  StorieIndexRoute: StorieIndexRoute,
+  AboutRoute: AboutRoute,
+  CompaniesRoute: CompaniesRoute,
+  ContactRoute: ContactRoute,
+  PeopleRoute: PeopleRoute,
+  StoriesSlugRoute: StoriesSlugRoute,
+  StoriesIndexRoute: StoriesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

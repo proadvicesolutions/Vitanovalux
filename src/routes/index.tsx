@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { people, photos, stories } from "@/lib/content";
-import { ClosingBand, manifesto, meta, NameSection, PersonCard, Quote, SectionHead, StoryCard, ValuesSection } from "@/components/site/blocks";
+import { ClosingBand, Eyebrow, FeaturedPeople, manifesto, meta, NameSection, Quote, StoriesFeature, ValuesSection } from "@/components/site/blocks";
+import { CometRing } from "@/components/site/CometRing";
 
 export const Route = createFileRoute("/")({
-  head: () => meta("Vita Nova Lux · Nuova luce, nuovo lusso.", "Holding di investimento del gruppo Hadlaan. Investiamo nelle imprese italiane di valore e nelle persone che le guidano."),
+  head: () => meta("Vita Nova Lux · Nuova luce, nuovo lusso.", "The Italian investment holding of the Hadlaan group. We invest in Italian companies of value and in the people who lead them."),
   component: Home,
 });
 
@@ -13,48 +13,39 @@ function Home() {
   const { t } = useLang();
   return (
     <>
-      <section className="bg-band text-on-band">
-        <div className="container-site grid items-center gap-12 pt-16 md:pt-24 lg:grid-cols-[1.1fr_0.9fr] lg:py-32">
-          <div>
-            <p className="eyebrow eyebrow-band">{t({ it: "Holding di investimento · Made in Italy", en: "Investment holding · Made in Italy" })}</p>
-            <h1 className="t-display mt-6">{t({ it: "Nuova luce alle imprese italiane.", en: "New light for Italian companies." })}</h1>
-            <p className="t-lead mt-6 prose-w text-on-band-muted">{t({ it: "Investiamo nelle imprese di valore e nelle persone che le guidano. Socio, non fondo.", en: "We invest in companies of value and in the people who lead them. A partner, not a fund." })}</p>
+      {/* Hero: full-bleed chiaroscuro portrait fading into night blue, the Comet ring behind the headline. */}
+      <section className="relative isolate overflow-hidden bg-band text-on-band">
+        <img
+          src={photos.studio}
+          alt={t({ en: "Portrait of an entrepreneur in his study, side light", it: "Ritratto di un imprenditore nel suo studio, luce laterale" })}
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-[70%_center] opacity-80 lg:left-auto lg:w-[62%] lg:opacity-100"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-band from-[30%] via-band/70 via-[55%] to-band/10 lg:bg-gradient-to-r lg:from-band lg:from-[38%] lg:via-band/70 lg:via-[52%] lg:to-transparent" />
+        <CometRing className="pointer-events-none absolute -left-[14rem] -top-[12rem] -z-10 w-[40rem] text-band-raised opacity-80 lg:-left-[18rem] lg:-top-[16rem] lg:w-[58rem]" showSun={false} />
+        <div className="container-site flex min-h-[640px] flex-col justify-end pb-16 pt-40 md:min-h-[720px] lg:min-h-[min(860px,calc(100svh-80px))] lg:justify-center lg:pb-24 lg:pt-24">
+          <div className="max-w-[760px]">
+            <Eyebrow band>{t({ en: "Investment holding · Made in Italy", it: "Holding di investimento · Made in Italy" })}</Eyebrow>
+            <h1 className="t-hero mt-8">{t({ en: "New light for Italian companies.", it: "Nuova luce alle imprese italiane." })}</h1>
+            <p className="t-lead mt-8 max-w-[560px] text-on-band-muted">{t({ en: "We invest in companies of value and in the people who lead them. A partner, not a fund.", it: "Investiamo nelle imprese di valore e nelle persone che le guidano. Socio, non fondo." })}</p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/persone" className="btn btn-primary">{t({ it: "Conosci le persone", en: "Meet the people" })}</Link>
-              <Link to="/chi-siamo" className="btn btn-secondary-band">{t({ it: "Chi siamo", en: "About us" })}</Link>
+              <Link to="/people" className="btn btn-primary">{t({ en: "Meet the people", it: "Conosci le persone" })}</Link>
+              <Link to="/about" className="btn btn-secondary-band">{t({ en: "About us", it: "Chi siamo" })}</Link>
             </div>
           </div>
-          <img src={photos.studio} alt={t({ it: "Ritratto di un imprenditore nel suo studio, luce laterale", en: "Portrait of an entrepreneur in his study, side light" })} className="-mx-4 aspect-[4/5] w-[calc(100%+2rem)] max-w-none object-cover md:mx-0 md:w-full lg:max-h-[640px]" />
+        </div>
+        <div className="container-site relative hidden border-t rule-band lg:block">
+          <div className="flex items-center justify-between py-6 t-caption text-on-band-muted">
+            <span className="tracking-[2px] uppercase">Nuova luce, nuovo lusso.</span>
+            <span>{t({ en: "Italy · the Gulf", it: "Italia · Golfo" })}</span>
+          </div>
         </div>
       </section>
 
       <NameSection />
       <ValuesSection />
-
-      <section className="section-y bg-surface-raised">
-        <div className="container-site">
-          <SectionHead eyebrow={{ it: "Le persone di VNL", en: "The people of VNL" }} title={{ it: "Le persone prima dei numeri.", en: "People before numbers." }}>
-            <Link to="/persone" className="link-gold inline-flex items-center gap-2 t-label">{t({ it: "Tutte le persone", en: "All the people" })}<ArrowRight size={16} strokeWidth={1.5} aria-hidden /></Link>
-          </SectionHead>
-          <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-8">
-            {people.map((p) => <PersonCard key={p.photo} p={p} />)}
-          </div>
-        </div>
-      </section>
-
-      <Quote {...manifesto} />
-
-      <section className="section-y">
-        <div className="container-site">
-          <SectionHead title={{ it: "Storie", en: "Stories" }}>
-            <Link to="/storie" className="link-gold inline-flex items-center gap-2 t-label">{t({ it: "Tutte le storie", en: "All stories" })}<ArrowRight size={16} strokeWidth={1.5} aria-hidden /></Link>
-          </SectionHead>
-          <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-8">
-            {stories.slice(0, 3).map((s) => <StoryCard key={s.slug} s={s} />)}
-          </div>
-        </div>
-      </section>
-
+      <FeaturedPeople people={people} />
+      <Quote {...manifesto} photo={photos.cortile} />
+      <StoriesFeature stories={stories} />
       <ClosingBand />
     </>
   );

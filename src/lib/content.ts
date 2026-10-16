@@ -25,9 +25,9 @@ export const values: { title: T; text: T }[] = [
 ];
 
 export type Person = { photo: string; alt: T; quote: T };
-const name = "[Nome Cognome]";
+const name = "[Name Surname]";
 export const personName = name;
-export const personRole = "[Ruolo · Impresa]";
+export const personRole = "[Role · Company]";
 
 export const people: Person[] = [
   { photo: photos.firenze, alt: { it: "Imprenditrice ritratta a Firenze, luce laterale", en: "Entrepreneur portrayed in Florence, side light" }, quote: { it: "Il lusso vero è il tempo che dedichi a fare bene le cose.", en: "True luxury is the time you spend doing things well." } },
@@ -45,12 +45,12 @@ export const series = ["Volti", "Le Persone di VNL", "Dietro la luce", "Il Nuovo
 
 export type Story = { slug: string; series: (typeof series)[number]; date: string; title: T; photo: string; alt: T };
 export const stories: Story[] = [
-  { slug: "abito-su-misura", series: "Dietro la luce", date: "2026-09-18", title: { it: "Qui nasce un abito su misura. E un'idea di impresa.", en: "A made-to-measure suit is born here. So is an idea of business." }, photo: photos.atelier, alt: { it: "Atelier sartoriale con un abito in lavorazione", en: "Tailoring atelier with a suit in progress" } },
-  { slug: "cosa-rende-preziosa-un-impresa", series: "Il Nuovo Lusso", date: "2026-08-27", title: { it: "Cosa rende preziosa un'impresa: cura, qualità, durata.", en: "What makes a company precious: care, quality, durability." }, photo: photos.mani, alt: { it: "Mani di un artigiano illuminate di lato", en: "A craftsman's hands lit from the side" } },
-  { slug: "italia-e-golfo", series: "VNL Perspective", date: "2026-07-30", title: { it: "Italia e Golfo: perché investiamo nel lungo periodo.", en: "Italy and the Gulf: why we invest for the long term." }, photo: photos.cortile, alt: { it: "Cortile di un palazzo storico", en: "Courtyard of a historic palazzo" } },
-  { slug: "volti-firenze", series: "Volti", date: "2026-07-02", title: { it: "Un volto, una città, un mestiere.", en: "One face, one city, one craft." }, photo: photos.firenze, alt: { it: "Ritratto di un'imprenditrice a Firenze", en: "Portrait of an entrepreneur in Florence" } },
-  { slug: "tre-generazioni", series: "Le Persone di VNL", date: "2026-06-11", title: { it: "Tre generazioni, una bottega.", en: "Three generations, one workshop." }, photo: photos.bottega, alt: { it: "Famiglia di artigiani in bottega", en: "Family of artisans in their workshop" } },
-  { slug: "nuova-luce-still-life", series: "Nuova Luce", date: "2026-05-20", title: { it: "Il primo giorno nel gruppo.", en: "The first day in the group." }, photo: photos.still, alt: { it: "Natura morta di oggetti di bottega", en: "Still life of workshop objects" } },
+  { slug: "made-to-measure", series: "Dietro la luce", date: "2026-09-18", title: { it: "Qui nasce un abito su misura. E un'idea di impresa.", en: "A made-to-measure suit is born here. So is an idea of business." }, photo: photos.atelier, alt: { it: "Atelier sartoriale con un abito in lavorazione", en: "Tailoring atelier with a suit in progress" } },
+  { slug: "what-makes-a-company-precious", series: "Il Nuovo Lusso", date: "2026-08-27", title: { it: "Cosa rende preziosa un'impresa: cura, qualità, durata.", en: "What makes a company precious: care, quality, durability." }, photo: photos.mani, alt: { it: "Mani di un artigiano illuminate di lato", en: "A craftsman's hands lit from the side" } },
+  { slug: "italy-and-the-gulf", series: "VNL Perspective", date: "2026-07-30", title: { it: "Italia e Golfo: perché investiamo nel lungo periodo.", en: "Italy and the Gulf: why we invest for the long term." }, photo: photos.cortile, alt: { it: "Cortile di un palazzo storico", en: "Courtyard of a historic palazzo" } },
+  { slug: "faces-florence", series: "Volti", date: "2026-07-02", title: { it: "Un volto, una città, un mestiere.", en: "One face, one city, one craft." }, photo: photos.firenze, alt: { it: "Ritratto di un'imprenditrice a Firenze", en: "Portrait of an entrepreneur in Florence" } },
+  { slug: "three-generations", series: "Le Persone di VNL", date: "2026-06-11", title: { it: "Tre generazioni, una bottega.", en: "Three generations, one workshop." }, photo: photos.bottega, alt: { it: "Famiglia di artigiani in bottega", en: "Family of artisans in their workshop" } },
+  { slug: "the-first-day", series: "Nuova Luce", date: "2026-05-20", title: { it: "Il primo giorno nel gruppo.", en: "The first day in the group." }, photo: photos.still, alt: { it: "Natura morta di oggetti di bottega", en: "Still life of workshop objects" } },
 ];
 
 export const companies: { photo: string; alt: T; sector: T; text: T }[] = [

@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Vita Nova Lux" },
-      { name: "description", content: "Vita Nova Lux, holding di investimento del gruppo Hadlaan." },
+      { name: "description", content: "Vita Nova Lux, the Italian investment holding of the Hadlaan group." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -101,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="it">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
@@ -119,7 +119,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LangProvider>
-        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:bg-surface-raised focus:p-3">Vai al contenuto</a>
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:bg-surface-raised focus:p-3">Skip to content</a>
         <NavBar />
         <main id="main">
           <Outlet />

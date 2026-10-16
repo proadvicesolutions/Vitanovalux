@@ -6,17 +6,17 @@ import logoV from "@/assets/vnl-verticale-payoff-negativo.svg.asset.json";
 import { useLang } from "@/lib/i18n";
 
 export const nav = [
-  { to: "/chi-siamo", label: { it: "Chi siamo", en: "About us" } },
-  { to: "/persone", label: { it: "Persone", en: "People" } },
-  { to: "/imprese", label: { it: "Imprese", en: "Companies" } },
-  { to: "/storie", label: { it: "Storie", en: "Stories" } },
+  { to: "/about", label: { it: "Chi siamo", en: "About us" } },
+  { to: "/people", label: { it: "Persone", en: "People" } },
+  { to: "/companies", label: { it: "Imprese", en: "Companies" } },
+  { to: "/stories", label: { it: "Storie", en: "Stories" } },
 ] as const;
 
 function LangSwitch() {
   const { lang, setLang } = useLang();
   return (
-    <div className="flex items-center gap-1 t-label text-on-band-muted" role="group" aria-label="Lingua / Language">
-      {(["it", "en"] as const).map((l, i) => (
+    <div className="flex items-center gap-1 t-label text-on-band-muted" role="group" aria-label="Language / Lingua">
+      {(["en", "it"] as const).map((l, i) => (
         <span key={l} className="flex items-center gap-1">
           {i > 0 && <span aria-hidden>/</span>}
           <button
@@ -39,7 +39,7 @@ export function NavBar() {
   const linkCls = "t-label font-medium text-on-band py-2 border-b-2 border-transparent transition-colors duration-200 hover:border-on-band-muted";
   const activeCls = { className: "!border-gold" };
   return (
-    <header className="sticky top-0 z-50 bg-band">
+    <header className="sticky top-0 z-50 border-b border-band-raised bg-band/95 backdrop-blur-md">
       <div className="container-site flex h-16 items-center justify-between md:h-20">
         <Link to="/" aria-label="Vita Nova Lux, home" onClick={() => setOpen(false)}>
           <img src={logoH.url} alt="Vita Nova Lux" className="h-8 w-auto md:h-10" />
@@ -53,7 +53,7 @@ export function NavBar() {
         </nav>
         <div className="hidden items-center gap-6 lg:flex">
           <LangSwitch />
-          <Link to="/contatti" className="btn btn-primary">{t({ it: "Contatti", en: "Contact" })}</Link>
+          <Link to="/contact" className="btn btn-primary">{t({ it: "Contatti", en: "Contact" })}</Link>
         </div>
         <button
           type="button"
@@ -76,7 +76,7 @@ export function NavBar() {
             ))}
             <div className="mt-4 flex items-center justify-between">
               <LangSwitch />
-              <Link to="/contatti" onClick={() => setOpen(false)} className="btn btn-primary">{t({ it: "Contatti", en: "Contact" })}</Link>
+              <Link to="/contact" onClick={() => setOpen(false)} className="btn btn-primary">{t({ it: "Contatti", en: "Contact" })}</Link>
             </div>
           </nav>
         </div>
@@ -90,6 +90,10 @@ export function Footer() {
   const col = "t-label text-on-band-muted hover:text-on-band transition-colors duration-200";
   return (
     <footer className="bg-footer text-on-band">
+      <div className="container-site border-b border-band-raised py-16 md:py-24">
+        <p className="t-statement max-w-[900px]">Nuova luce, nuovo lusso.</p>
+        <p className="t-lead mt-4 text-on-band-muted">{t({ en: "New light, new luxury.", it: "Nuova luce alle imprese italiane." })}</p>
+      </div>
       <div className="container-site section-y grid gap-12 md:grid-cols-[1fr_auto_auto] md:gap-20">
         <img src={logoV.url} alt="Vita Nova Lux, Nuova luce, nuovo lusso." className="w-[220px]" />
         <div>
@@ -103,7 +107,7 @@ export function Footer() {
         <div>
           <h2 className="eyebrow eyebrow-band">{t({ it: "Contatti", en: "Contact" })}</h2>
           <ul className="mt-5 space-y-3">
-            <li><Link to="/contatti" className={col}>{t({ it: "Scrivici", en: "Write to us" })}</Link></li>
+            <li><Link to="/contact" className={col}>{t({ it: "Scrivici", en: "Write to us" })}</Link></li>
             <li><a href="#" className={`${col} inline-flex items-center gap-2`}><Linkedin size={16} strokeWidth={1.5} aria-hidden />LinkedIn</a></li>
             <li><a href="#" className={`${col} inline-flex items-center gap-2`}><Instagram size={16} strokeWidth={1.5} aria-hidden />Instagram</a></li>
           </ul>
