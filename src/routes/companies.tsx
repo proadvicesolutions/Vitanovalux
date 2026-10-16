@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useLang } from "@/lib/i18n";
 import { companies, photos } from "@/lib/content";
-import { ClosingBand, meta, PageHero } from "@/components/site/blocks";
+import { ClosingBand, meta } from "@/components/site/blocks";
+import { TorchHero } from "@/components/site/experience";
 
 export const Route = createFileRoute("/companies")({
   head: () => meta("Companies · Vita Nova Lux", "The Italian companies growing with us: stories of care, quality and durability."),
@@ -14,12 +15,7 @@ function Companies() {
   const { t } = useLang();
   return (
     <>
-      <PageHero
-        eyebrow={{ en: "Companies", it: "Imprese" }}
-        title={{ en: "The companies growing with us.", it: "Le imprese che crescono con noi." }}
-        lead={{ en: "Workshops, ateliers and family houses: each one keeps its name, its hands and its way of working.", it: "Botteghe, atelier e case di famiglia: ognuna conserva il suo nome, le sue mani e il suo modo di lavorare." }}
-        photo={photos.mani}
-      />
+      <TorchHero photo={photos.mani} alt={{ en: "A craftsman\'s hands lit from the side", it: "Mani di un artigiano illuminate di lato" }} eyebrow={{ en: "Companies", it: "Imprese" }} title={{ en: "The companies growing with us.", it: "Le imprese che crescono con noi." }} lead={{ en: "Workshops, ateliers and family houses: each one keeps its name, its hands and its way of working.", it: "Botteghe, atelier e case di famiglia: ognuna conserva il suo nome, le sue mani e il suo modo di lavorare." }} />
       <section className="section-xl bg-surface">
         <div className="container-site grid gap-24 lg:gap-32">
           {companies.map((c, i) => (

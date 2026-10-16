@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { morePeople, people, photos } from "@/lib/content";
-import { ClosingBand, FeaturedPeople, meta, PageHero, PersonCard, Quote } from "@/components/site/blocks";
+import { ClosingBand, FeaturedPeople, meta } from "@/components/site/blocks";
+import { CoverGallery, Manifesto, TorchHero } from "@/components/site/experience";
 
 export const Route = createFileRoute("/people")({
   head: () => meta("People · Vita Nova Lux", "Entrepreneurs, managers and teams of the companies growing with Vita Nova Lux."),
@@ -10,27 +11,19 @@ export const Route = createFileRoute("/people")({
 function People() {
   return (
     <>
-      <PageHero
+      <TorchHero
+        photo={photos.bottega}
+        alt={{ en: "Father and daughter in the family workshop", it: "Padre e figlia nella bottega di famiglia" }}
         eyebrow={{ en: "The people of VNL", it: "Le persone di VNL" }}
         title={{ en: "People before numbers.", it: "Le persone prima dei numeri." }}
         lead={{ en: "Real faces, real voices. They are the ones who make the company.", it: "Volti veri, voci vere. Sono loro a fare l'impresa." }}
-        photo={photos.firenze}
       />
-      <FeaturedPeople people={people} eyebrow={{ en: "Faces", it: "Volti" }} title={{ en: "The faces behind the companies.", it: "I volti dietro le imprese." }} />
-      <section className="section-xl bg-surface">
-        <div className="container-site grid gap-14 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
-          {morePeople.map((p, i) => (
-            <div key={p.photo + p.quote.en} className={i === 1 ? "lg:mt-24" : ""}>
-              <PersonCard p={p} />
-            </div>
-          ))}
-        </div>
-      </section>
-      <Quote
+      <CoverGallery people={[...people, ...morePeople]} eyebrow={{ en: "Faces", it: "Volti" }} title={{ en: "Six covers, six companies.", it: "Sei copertine, sei imprese." }} />
+      <FeaturedPeople people={people} eyebrow={{ en: "In their words", it: "Con le loro parole" }} title={{ en: "The faces behind the companies.", it: "I volti dietro le imprese." }} />
+      <Manifesto
         text={{ en: "A company grows when someone believes in it every morning.", it: "Un'impresa cresce quando qualcuno ci crede ogni mattina." }}
         name="[Name Surname]"
         role={{ en: "[Role · Company]", it: "[Ruolo · Impresa]" }}
-        photo={photos.bottega}
       />
       <ClosingBand />
     </>

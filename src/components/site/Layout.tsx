@@ -39,7 +39,7 @@ export function NavBar() {
   const linkCls = "t-label font-medium text-on-band py-2 border-b-2 border-transparent transition-colors duration-200 hover:border-on-band-muted";
   const activeCls = { className: "!border-gold" };
   return (
-    <header className="sticky top-0 z-50 border-b border-band-raised bg-band/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-band-raised/60 bg-footer/85 backdrop-blur-md">
       <div className="container-site flex h-16 items-center justify-between md:h-20">
         <Link to="/" aria-label="Vita Nova Lux, home" onClick={() => setOpen(false)}>
           <img src={logoH.url} alt="Vita Nova Lux" className="h-8 w-auto md:h-10" />

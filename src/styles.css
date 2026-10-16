@@ -226,3 +226,52 @@
 }
 .group:hover .img-zoom { transform: scale(1.03); }
 @media (prefers-reduced-motion: reduce) { .group:hover .img-zoom { transform: none; } }
+
+/* ---------- Disruptive layer: torch, comet chapters, masthead, ticker ---------- */
+@property --x { syntax: "<percentage>"; inherits: true; initial-value: 62%; }
+@property --y { syntax: "<percentage>"; inherits: true; initial-value: 45%; }
+.torch { --x: 62%; --y: 45%; --r: 300px; cursor: crosshair; touch-action: pan-y; }
+.torch-dark { filter: brightness(0.16) saturate(0.5); }
+.torch-lit {
+  -webkit-mask-image: radial-gradient(circle var(--r) at var(--x) var(--y), #000 0%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(circle var(--r) at var(--x) var(--y), #000 0%, #000 35%, transparent 100%);
+}
+.torch-drift { animation: torch-drift 14s ease-in-out infinite alternate; }
+@keyframes torch-drift {
+  0% { --x: 70%; --y: 40%; }
+  35% { --x: 58%; --y: 58%; }
+  70% { --x: 80%; --y: 62%; }
+  100% { --x: 66%; --y: 34%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .torch-drift { animation: none; }
+  .torch-lit { -webkit-mask-image: none; mask-image: none; opacity: .75; }
+}
+.chapter-word {
+  font-family: var(--font-display); font-stretch: 125%; font-weight: 700;
+  font-size: clamp(88px, 17vw, 260px); line-height: .85; letter-spacing: -0.04em;
+  color: transparent; -webkit-text-stroke: 1.5px var(--on-band-muted);
+}
+.masthead {
+  font-family: var(--font-display); font-stretch: 125%; font-weight: 800;
+  font-size: clamp(52px, 11.4vw, 170px); line-height: .82; letter-spacing: -0.045em; white-space: nowrap;
+}
+.ticker-word {
+  font-family: var(--font-display); font-stretch: 125%; font-weight: 600;
+  font-size: clamp(40px, 6vw, 88px); line-height: 1; letter-spacing: -0.02em; white-space: nowrap;
+}
+.ticker { animation: ticker 32s linear infinite; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ticker { animation: none; } }
+.cover-mast {
+  font-family: var(--font-display); font-stretch: 125%; font-weight: 800;
+  font-size: 56px; line-height: .8; letter-spacing: -0.04em; color: #fff;
+}
+.manifesto {
+  font-family: var(--font-display); font-stretch: 112%; font-weight: 500;
+  font-size: clamp(40px, 6.4vw, 104px); line-height: 1.02; letter-spacing: -0.03em; text-wrap: balance;
+}
+.index-title {
+  font-family: var(--font-display); font-stretch: 112%; font-weight: 600;
+  font-size: clamp(24px, 3.2vw, 44px); line-height: 1.12; letter-spacing: -0.01em; text-wrap: balance;
+}
