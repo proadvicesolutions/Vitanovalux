@@ -153,7 +153,7 @@ export function Footer() {
       <div className="border-t border-band-raised">
         <div className="container-site flex flex-col gap-2 py-6 t-caption text-on-band-muted md:flex-row md:justify-between">
           <p>Vita Nova Lux S.r.l. · {t({ it: "[indirizzo e P.IVA da inserire]", en: "[address and VAT no. to be added]" })}</p>
-          <p><a href="#" className="hover:text-on-band">Privacy</a> · <a href="#" className="hover:text-on-band">Cookies</a></p>
+          <p><a href="#" className="hover:text-on-band">Privacy</a> · <a href="#" className="hover:text-on-band">{t({ it: "Cookie", en: "Cookies" })}</a></p>
         </div>
       </div>
     </footer>

@@ -142,7 +142,7 @@ export function Quote({ text, name, role, photo }: { text: T; name: string; role
 }
 
 export function StoryMeta({ s }: { s: Story }) {
-  const { lang } = useLang();
+  const { lang, t } = useLang();
   return (
     <div className="flex flex-wrap items-center gap-3">
       <span className="numeral !text-[12px] !tracking-[2px]">{t(seriesLabel[s.series]).toUpperCase()}</span>
