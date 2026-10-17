@@ -74,9 +74,9 @@ import orafo from "@/assets/home-orafo.jpg";
 /** Home cover gallery: new portraits plus two client photos, so Home does not repeat the other pages. */
 export const homePeople: Person[] = [
   { photo: ceramista, alt: { it: "Ceramista nella sua bottega, luce di finestra", en: "Ceramicist in her workshop, window light" }, quote: { it: "Ogni pezzo porta il segno di chi lo ha fatto.", en: "Every piece carries the mark of its maker." } },
-  people[1],
+  people[1]!,
   { photo: calzolaio, alt: { it: "Calzolaio al banco con una forma in legno", en: "Shoemaker at his bench holding a wooden last" }, quote: { it: "Una scarpa ben fatta accompagna una vita.", en: "A well-made shoe walks with you for a lifetime." } },
   { photo: cantina, alt: { it: "Vignaiola tra le botti di una cantina in pietra", en: "Winemaker among the barrels of a stone cellar" }, quote: { it: "Il vino insegna ad aspettare.", en: "Wine teaches you to wait." } },
-  morePeople[0],
+  morePeople[0]!,
   { photo: orafo, alt: { it: "Orafo al lavoro con la lente su un anello", en: "Goldsmith working on a ring with a loupe" }, quote: { it: "La precisione è una forma di rispetto.", en: "Precision is a form of respect." } },
 ];
