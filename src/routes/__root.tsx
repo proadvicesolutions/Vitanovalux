@@ -15,6 +15,11 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LangProvider, useLang } from "../lib/i18n";
 import { NavBar, Footer } from "../components/site/Layout";
 
+function SkipLink() {
+  const { t } = useLang();
+  return <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:bg-surface-raised focus:p-3">{t({ en: "Skip to content", it: "Vai al contenuto" })}</a>;
+}
+
 function NotFoundComponent() {
   const { t } = useLang();
   return (
@@ -120,7 +125,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LangProvider>
-        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:bg-surface-raised focus:p-3">Skip to content</a>
+        <SkipLink />
         <NavBar />
         <main id="main">
           <Outlet />
