@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLang } from "@/lib/i18n";
-import { morePeople, people, photos, stories } from "@/lib/content";
+import { homePeople, photos, stories } from "@/lib/content";
 import { ClosingBand, manifesto, meta } from "@/components/site/blocks";
 import { CometChapters, CoverGallery, Manifesto, Masthead, StoryIndex, Torch, ValuesTicker } from "@/components/site/experience";
 
@@ -57,7 +57,7 @@ function Home() {
       <Masthead photo={photos.firenze} alt={{ en: "Entrepreneur at a window in Florence", it: "Imprenditrice alla finestra, Firenze" }} />
       <CometChapters chapters={chapters} />
       <ValuesTicker />
-      <CoverGallery people={[...people, ...morePeople]} eyebrow={{ en: "The people of VNL", it: "Le persone di VNL" }} title={{ en: "People before numbers.", it: "Le persone prima dei numeri." }} />
+      <CoverGallery people={homePeople} eyebrow={{ en: "The people of VNL", it: "Le persone di VNL" }} title={{ en: "People before numbers.", it: "Le persone prima dei numeri." }} />
       <Manifesto {...manifesto} />
       <StoryIndex stories={stories.slice(0, 5)} />
       <ClosingBand />
