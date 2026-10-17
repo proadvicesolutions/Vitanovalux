@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLang } from "@/lib/i18n";
-import { homePeople, photos, stories } from "@/lib/content";
+import { homePeople, stories } from "@/lib/content";
+import heroStudio from "@/assets/home-hero-studio.jpg";
+import firenzeWide from "@/assets/home-firenze-wide.jpg";
 import { ClosingBand, manifesto, meta } from "@/components/site/blocks";
 import { CometChapters, CoverGallery, Manifesto, Masthead, StoryIndex, Torch, ValuesTicker } from "@/components/site/experience";
 
@@ -35,7 +37,7 @@ function Home() {
   return (
     <>
       {/* The visitor brings the light: the portrait stays dark except where the pointer (or finger) passes. */}
-      <Torch src={photos.studio} alt={t({ en: "Portrait of an entrepreneur in his study, side light", it: "Ritratto di un imprenditore nel suo studio, luce laterale" })} className="min-h-[100svh] text-on-band" radius={340}>
+      <Torch src={heroStudio} alt={t({ en: "Portrait of an entrepreneur in his study, side light", it: "Ritratto di un imprenditore nel suo studio, luce laterale" })} className="min-h-[100svh] text-on-band" radius={340}>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#081629]/90 via-[#081629]/30 to-transparent" />
         <div className="container-site pointer-events-none relative flex min-h-[calc(100svh-80px)] flex-col justify-end pb-14 pt-28 lg:pb-20">
           <p className="eyebrow eyebrow-line eyebrow-band">{t({ en: "Investment holding · Made in Italy", it: "Holding di investimento · Made in Italy" })}</p>
@@ -54,7 +56,7 @@ function Home() {
         </div>
       </Torch>
 
-      <Masthead photo={photos.firenze} alt={{ en: "Entrepreneur at a window in Florence", it: "Imprenditrice alla finestra, Firenze" }} />
+      <Masthead photo={firenzeWide} alt={{ en: "Entrepreneur at a window in Florence", it: "Imprenditrice alla finestra, Firenze" }} />
       <CometChapters chapters={chapters} />
       <ValuesTicker />
       <CoverGallery people={homePeople} eyebrow={{ en: "The people of VNL", it: "Le persone di VNL" }} title={{ en: "People before numbers.", it: "Le persone prima dei numeri." }} />
