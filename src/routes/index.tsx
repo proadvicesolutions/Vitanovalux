@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useLang } from "@/lib/i18n";
-import { homePeople, photos, stories } from "@/lib/content";
+import { homePeople, stories } from "@/lib/content";
 import heroStudio from "@/assets/home-hero-studio.jpg";
 import firenzeWide from "@/assets/home-firenze-wide.jpg";
 import { ClosingBand, manifesto, meta } from "@/components/site/blocks";
