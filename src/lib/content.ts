@@ -25,9 +25,8 @@ export const values: { title: T; text: T }[] = [
 ];
 
 export type Person = { photo: string; alt: T; quote: T };
-const name = "[Name Surname]";
-export const personName = name;
-export const personRole = "[Role · Company]";
+export const personName: T = { en: "[Name Surname]", it: "[Nome Cognome]" };
+export const personRole: T = { en: "[Role · Company]", it: "[Ruolo · Impresa]" };
 
 export const people: Person[] = [
   { photo: photos.firenze, alt: { it: "Imprenditrice ritratta a Firenze, luce laterale", en: "Entrepreneur portrayed in Florence, side light" }, quote: { it: "Il lusso vero è il tempo che dedichi a fare bene le cose.", en: "True luxury is the time you spend doing things well." } },
@@ -42,6 +41,15 @@ export const morePeople: Person[] = [
 ];
 
 export const series = ["Volti", "Le Persone di VNL", "Dietro la luce", "Il Nuovo Lusso", "VNL Perspective", "Nuova Luce"] as const;
+
+export const seriesLabel: Record<(typeof series)[number], T> = {
+  "Volti": { it: "Volti", en: "Faces" },
+  "Le Persone di VNL": { it: "Le Persone di VNL", en: "The People of VNL" },
+  "Dietro la luce": { it: "Dietro la luce", en: "Behind the Light" },
+  "Il Nuovo Lusso": { it: "Il Nuovo Lusso", en: "The New Luxury" },
+  "VNL Perspective": { it: "Lo sguardo di VNL", en: "VNL Perspective" },
+  "Nuova Luce": { it: "Nuova Luce", en: "New Light" },
+};
 
 export type Story = { slug: string; series: (typeof series)[number]; date: string; title: T; photo: string; alt: T };
 export const stories: Story[] = [

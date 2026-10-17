@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import mark from "@/assets/vnl-segno-negativo.svg.asset.json";
 import { useLang, type T } from "@/lib/i18n";
-import { fmtDate, personName, personRole, values, type Person, type Story } from "@/lib/content";
+import { fmtDate, seriesLabel, personName, personRole, values, type Person, type Story } from "@/lib/content";
 import { CometRing } from "./CometRing";
 
 const ROMAN = ["I", "II", "III", "IV", "V", "VI"];
@@ -80,8 +80,8 @@ export function PersonCard({ p }: { p: Person }) {
       <div className="overflow-hidden">
         <img src={p.photo} alt={t(p.alt)} className="img-zoom aspect-[4/5] w-full object-cover" loading="lazy" />
       </div>
-      <h3 className="t-h3 mt-6">{personName}</h3>
-      <p className="t-label mt-1 text-ink-muted">{personRole}</p>
+      <h3 className="t-h3 mt-6">{t(personName)}</h3>
+      <p className="t-label mt-1 text-ink-muted">{t(personRole)}</p>
       <blockquote className="mt-4 text-[18px] leading-7">{q(p.quote)}</blockquote>
     </article>
   );
@@ -102,7 +102,7 @@ export function FeaturedPeople({ people, eyebrow, title }: { people: Person[]; e
           <Eyebrow>{t(eyebrow ?? { en: "The people of VNL", it: "Le persone di VNL" })}</Eyebrow>
           <h2 className="t-statement mt-6">{t(title ?? { en: "People before numbers.", it: "Le persone prima dei numeri." })}</h2>
           <blockquote className="t-reading mt-10">{q(lead.quote)}</blockquote>
-          <p className="t-label mt-5"><span className="font-semibold">{personName}</span> <span className="text-ink-muted">· {personRole}</span></p>
+          <p className="t-label mt-5"><span className="font-semibold">{t(personName)}</span> <span className="text-ink-muted">· {t(personRole)}</span></p>
           <div className="mt-12 grid grid-cols-2 gap-6 lg:mt-auto lg:pt-12">
             {rest.slice(0, 2).map((p) => (
               <figure key={p.photo} className="group">
@@ -142,10 +142,10 @@ export function Quote({ text, name, role, photo }: { text: T; name: string; role
 }
 
 export function StoryMeta({ s }: { s: Story }) {
-  const { lang } = useLang();
+  const { lang, t } = useLang();
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <span className="numeral !text-[12px] !tracking-[2px]">{s.series.toUpperCase()}</span>
+      <span className="numeral !text-[12px] !tracking-[2px]">{t(seriesLabel[s.series]).toUpperCase()}</span>
       <span aria-hidden className="h-px w-6 bg-line-strong" />
       <time dateTime={s.date} className="t-caption text-ink-muted">{fmtDate(s.date, lang)}</time>
     </div>
@@ -251,7 +251,7 @@ export function ClosingBand() {
 
 export const manifesto = {
   text: { it: "Gli altri raccontano i numeri. Noi raccontiamo le persone che fanno l'impresa.", en: "Others tell numbers. We tell the people who make the company." },
-  name: "[Name Surname]",
+  name: { en: "[Name Surname]", it: "[Nome Cognome]" },
   role: { it: "Presidente, Vita Nova Lux", en: "Chair, Vita Nova Lux" },
 };
 

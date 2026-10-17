@@ -22,7 +22,7 @@ function People() {
       <FeaturedPeople people={people} eyebrow={{ en: "In their words", it: "Con le loro parole" }} title={{ en: "The faces behind the companies.", it: "I volti dietro le imprese." }} />
       <Manifesto
         text={{ en: "A company grows when someone believes in it every morning.", it: "Un'impresa cresce quando qualcuno ci crede ogni mattina." }}
-        name="[Name Surname]"
+        name={{ en: "[Name Surname]", it: "[Nome Cognome]" }}
         role={{ en: "[Role · Company]", it: "[Ruolo · Impresa]" }}
       />
       <ClosingBand />

@@ -49,7 +49,7 @@ function Article() {
             <div className="mx-auto max-w-[720px] space-y-8">
               <p className="t-reading">{t({ en: "[Article text to be added. Short sentences, first person plural.]", it: "[Testo dell'articolo da inserire. Frasi brevi, prima persona plurale.]" })}</p>
               <p className="text-[19px] leading-8 text-ink-muted">{t({ en: "We tell the journey, not the exit. Every company that joins the group becomes a story worth telling.", it: "Raccontiamo il percorso, non l'uscita. Ogni impresa entrata nel gruppo diventa una storia da raccontare." })}</p>
-              <p className="border-t border-line pt-6 t-label text-ink-muted">{t({ en: "By", it: "Di" })} {personName}</p>
+              <p className="border-t border-line pt-6 t-label text-ink-muted">{t({ en: "By", it: "Di" })} {t(personName)}</p>
             </div>
           </div>
         </div>

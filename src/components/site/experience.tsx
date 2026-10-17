@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { useLang, type T } from "@/lib/i18n";
-import { fmtDate, personName, personRole, values, type Person, type Story } from "@/lib/content";
+import { fmtDate, seriesLabel, personName, personRole, values, type Person, type Story } from "@/lib/content";
 
 /* ------------------------------------------------------------------ */
 /* Shared: reduced motion                                               */
@@ -229,7 +229,7 @@ export function CoverGallery({ people, eyebrow, title }: { people: Person[]; eye
             </header>
             <div className="absolute inset-x-0 bottom-0 p-6">
               <blockquote className="t-reading !text-[24px] !leading-[32px] text-on-band">{q(p.quote)}</blockquote>
-              <p className="mt-4 t-label"><span className="font-semibold text-gold">{personName}</span> <span className="text-on-band-muted">· {personRole}</span></p>
+              <p className="mt-4 t-label"><span className="font-semibold text-gold">{t(personName)}</span> <span className="text-on-band-muted">· {t(personRole)}</span></p>
             </div>
           </article>
         ))}
@@ -242,7 +242,7 @@ export function CoverGallery({ people, eyebrow, title }: { people: Person[]; eye
 /* ------------------------------------------------------------------ */
 /* 6. Manifesto in giant type                                           */
 /* ------------------------------------------------------------------ */
-export function Manifesto({ text, name, role }: { text: T; name: string; role: T }) {
+export function Manifesto({ text, name, role }: { text: T; name: T; role: T }) {
   const { t, q } = useLang();
   return (
     <section className="bg-surface section-xl">
@@ -250,7 +250,7 @@ export function Manifesto({ text, name, role }: { text: T; name: string; role: T
         <blockquote className="manifesto text-ink">{q(text)}</blockquote>
         <figcaption className="mt-12 flex items-center gap-4 t-label">
           <span className="h-px w-12 bg-gold" aria-hidden />
-          <span className="font-semibold">{name}</span>
+          <span className="font-semibold">{t(name)}</span>
           <span className="text-ink-muted">{t(role)}</span>
         </figcaption>
       </figure>
@@ -296,7 +296,7 @@ export function StoryIndex({ stories, heading = true }: { stories: Story[]; head
                   <span className="index-title transition-colors duration-200 group-hover:text-gold-ink">{t(s.title)}</span>
                 </span>
                 <span className="flex flex-col gap-1 t-caption text-ink-muted md:items-end md:text-right">
-                  <span className="font-semibold uppercase tracking-[2px] text-ink">{s.series}</span>
+                  <span className="font-semibold uppercase tracking-[2px] text-ink">{t(seriesLabel[s.series])}</span>
                   <time dateTime={s.date}>{fmtDate(s.date, lang)}</time>
                 </span>
               </Link>
